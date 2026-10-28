@@ -22,12 +22,20 @@ body:has(dialog[open]){overflow:hidden}dialog{border:0;border-radius:8px;padding
 
 .session-bar{max-width:844px;margin:12px auto 0;display:flex;align-items:center;justify-content:space-between;gap:15px;font-size:12px;color:var(--muted);padding:0 10px}#lock-session{min-height:44px;padding:8px 14px;border:1px solid var(--line);border-radius:6px;background:transparent;cursor:pointer}#session-dialog{width:min(520px,92vw);height:auto;padding:30px}#session-dialog p{font-size:14px}#error-details{margin-bottom:20px}#error-details summary{cursor:pointer;padding:10px 0}#error-body{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px;max-height:280px;overflow:auto;background:#fff0ec;padding:12px}
 select{width:100%;height:52px;border:1px solid var(--line);border-radius:3px;padding:11px 13px;font:inherit;font-size:16px;color:var(--ink);background:#fffefa}select[aria-invalid=true]{border:2px solid #b4352b;background:#fff5f2}
+
+/* Keep Safari's native date control within its grid cell on iPad. */
+.grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.field{min-width:0}
+#DateOfBirth{-webkit-appearance:none;appearance:none;display:block;box-sizing:border-box;width:100%;min-width:0;max-width:100%;height:52px;min-height:52px;text-align:left;overflow:hidden}
+#DateOfBirth::-webkit-date-and-time-value{text-align:left;min-height:1.5em;margin:0}
+#DateOfBirth::-webkit-datetime-edit{display:inline-flex;padding:0;align-items:center}
+@media(max-width:600px){.grid{grid-template-columns:minmax(0,1fr)}}
 </style>
 </head>
 <body>
 <header><img class="brand-logo" src="logo.svg" alt="Schnitz" width="112" height="112"><img class="collective-logo" src="crumb-collective.png" alt="The Crumb Collective Loyalty Program" width="112" height="112"><div class="header-note">Made fresh. Made for you.</div></header>
 <div class="session-bar"><span id="session-status">Session locked</span><button type="button" id="lock-session">Lock session</button></div>
-<dialog id="session-dialog" aria-labelledby="session-heading"><form id="session-form" autocomplete="off"><h2 id="session-heading">Staff session setup</h2><p>Enter your staff access code to enable registration. It clears when this page reloads or the session is locked. The Redcat authentication token is stored securely in Cloudflare.</p><label for="session-token">Staff access code</label><input id="session-token" type="password" autocomplete="off" autocapitalize="none" spellcheck="false" required><p id="setup-error" class="field-error" role="alert"></p><button class="submit" type="submit">Start session</button><p class="hint">Registrations will be sent to the Schnitz sandpit · Store <span id="setup-store"></span></p></form></dialog>
+<dialog id="session-dialog" aria-labelledby="session-heading"><form id="session-form" autocomplete="off"><h2 id="session-heading">Staff session setup</h2><p>Enter your staff access code to enable registration. It clears when this page reloads or the session is locked. The Redcat authentication token is stored securely in Cloudflare.</p><label for="session-token">Staff access code</label><input id="session-token" type="password" autocomplete="off" autocapitalize="none" spellcheck="false" required><p id="setup-error" class="field-error" role="alert"></p><button class="submit" type="submit">Start session</button><p class="hint">Schnitz registration · Store <span id="setup-store"></span></p></form></dialog>
 <main class="layout">
 <section aria-label="Loyalty registration">
 <form id="registration" action="#" method="post">
@@ -47,7 +55,7 @@ select{width:100%;height:52px;border:1px solid var(--line);border-radius:3px;pad
 </div>
 <div class="preferences"><h3>I'd like to receive news, offers and updates by: <span class="optional">(optional)</span></h3><div class="checks-row"><label class="check"><input type="checkbox" name="SendEmail" id="SendEmail" checked><span>Email</span></label><label class="check"><input type="checkbox" name="SendSMS" id="SendSMS" checked><span>SMS</span></label></div></div>
 <label class="check terms"><input id="TermsAccepted" type="checkbox" required><span>I agree to the <button type="button" class="terms-link" id="open-terms" aria-haspopup="dialog">Terms And Conditions</button>. <span aria-hidden="true">*</span></span></label>
-<p id="submit-help" class="hint">Complete all required fields and agree to the Terms And Conditions to continue.</p><button class="submit" type="submit" disabled aria-describedby="submit-help">Submit</button><p class="form-foot">Sandpit registration · Details are sent through the secure registration service.</p>
+<p id="submit-help" class="hint">Complete all required fields and agree to the Terms And Conditions to continue.</p><button class="submit" type="submit" disabled aria-describedby="submit-help">Submit</button><p class="form-foot">Details are sent through the secure registration service.</p>
 </form>
 </section>
 </main>
@@ -76,7 +84,7 @@ field('session-form').addEventListener('submit',event=>{
  try{const url=new URL(window.REGISTRATION_CONFIG.registrationUrl);if(url.protocol!=='https:'||url.pathname!=='/register')throw new Error();}catch{field('setup-error').textContent='Use an HTTPS Worker URL ending in /register.';return;}
  field('setup-error').textContent='';
  sessionToken=token;field('session-token').value='';sessionDialog.close();
- field('session-status').textContent='Sandpit session active · Store '+window.REGISTRATION_CONFIG.storeId;
+ field('session-status').textContent='Session active · Store '+window.REGISTRATION_CONFIG.storeId;
  validate();field('Email').focus();
 });
 sessionDialog.addEventListener('cancel',event=>event.preventDefault());
