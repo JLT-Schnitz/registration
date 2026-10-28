@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en-AU"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Welcome to The Crumb Collective</title><style>
+*{box-sizing:border-box}body{margin:0;color:#22231f;background:#fff;font:16px/1.6 Arial,sans-serif;text-align:center;padding:64px 24px 28px}main{max-width:570px;margin:auto}h1{color:#a6192e;font-size:29px;line-height:1.25;margin:10px 0 18px}h2{font-size:23px;margin:38px 0 20px}.badges{display:flex;justify-content:center;align-items:center;gap:18px;flex-wrap:wrap}.badge{background:transparent;border:0;padding:0;cursor:pointer;min-height:58px;display:flex;align-items:center}.badge img{display:block;width:auto;height:58px;max-width:100%;object-fit:contain}.badge:focus-visible,button:focus-visible{outline:3px solid #a6192e;outline-offset:4px}.qr{display:block;width:min(310px,80vw);height:auto;margin:12px auto;background:white}.back{min-height:46px;padding:10px 18px;border:1px solid #a6192e;border-radius:8px;background:#fff;color:#a6192e;font:inherit;cursor:pointer}.timer,.preview{font-size:12px;color:#67685e}.preview{background:#f7f5ee;padding:8px;border-radius:4px}.link{display:inline-block;color:#a6192e;font-size:14px;margin-bottom:20px}[hidden]{display:none!important}@media(max-width:430px){body{padding:60px 18px 20px}h1{font-size:25px}.badges{gap:12px}h2{margin-top:24px}}
+</style></head><body><main>
+<p id="preview" class="preview" hidden>Preview only — no account was created and no SMS was sent.</p>
+<section id="thanks"><h1>Thanks for joining<br>The Crumb Collective!</h1><p>You'll shortly receive an SMS to verify your account.</p><h2>Download the Schnitz App!</h2><div class="badges"><button type="button" class="badge" data-store="apple" aria-label="Show App Store QR code"><img src="app-store.svg" alt="Download on the App Store"></button><button type="button" class="badge" data-store="google" aria-label="Show Google Play QR code"><img src="google-play.svg" alt="Get it on Google Play"></button></div></section>
+<section id="qr-view" hidden><h1 id="qr-title"></h1><p>Scan with your phone to download the Schnitz App.</p><img id="qr-image" class="qr" alt=""><button type="button" class="back" id="back">Back to app downloads</button></section>
+<p class="timer">This window closes in <span id="seconds">30</span> seconds.</p>
+</main><script>
+const get=id=>document.getElementById(id);
+get('preview').hidden=!new URLSearchParams(location.search).has('preview');
+const stores={apple:{title:'Download on the App Store',image:'app-store-qr.svg',url:'https://apps.apple.com/au/app/schnitz/id1530765524'},google:{title:'Get it on Google Play',image:'google-play-qr.svg',url:'https://play.google.com/store/apps/details?id=au.com.redcat.schnitz&hl=en_AU'}};
+let deadline;let timer;
+function restartTimer(){clearInterval(timer);deadline=Date.now()+30000;get('seconds').textContent='30';timer=setInterval(()=>{const seconds=Math.max(0,Math.ceil((deadline-Date.now())/1000));get('seconds').textContent=seconds;if(!seconds){clearInterval(timer);parent.postMessage({type:'close-welcome'},'*');}},250);}
+document.querySelectorAll('[data-store]').forEach(button=>button.addEventListener('click',()=>{const store=stores[button.dataset.store];get('qr-title').textContent=store.title;get('qr-image').src=store.image;get('qr-image').alt='QR code: '+store.url;get('thanks').hidden=true;get('qr-view').hidden=false;get('back').focus();restartTimer();}));
+get('back').addEventListener('click',()=>{get('qr-view').hidden=true;get('thanks').hidden=false;document.querySelector('[data-store]').focus();restartTimer();});
+window.addEventListener('pagehide',()=>clearInterval(timer));restartTimer();
+</script></body></html>

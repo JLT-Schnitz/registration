@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Join the Schnitz loyalty family. Registration front-end preview."><title>Join the family · Schnitz</title>
+<style>
+:root{--ink:#22231f;--paper:#f7f5ee;--yellow:#fbd540;--line:#d6d6ce;--muted:#67685e}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.5 Arial,Helvetica,sans-serif}header{max-width:1320px;margin:auto;padding:26px 6%;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}.logo{font-size:39px;font-weight:950;letter-spacing:-3px;line-height:1;transform:rotate(-4deg)}.header-note{font-size:11px;letter-spacing:2px;font-weight:700;text-transform:uppercase}.layout{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:0.9fr 1.1fr;gap:90px;padding:64px 5% 80px}.intro{padding-top:17px}.eyebrow{font-size:11px;font-weight:800;letter-spacing:2px;display:flex;align-items:center;gap:10px}.eyebrow:before{content:'';width:24px;height:3px;background:var(--ink)}h1{font-size:clamp(52px,5.9vw,78px);line-height:.99;letter-spacing:-4px;margin:26px 0;font-weight:900}h1 span{display:inline-block;background:var(--yellow);padding:0 10px 9px 4px;transform:rotate(-2deg)}.lead{max-width:320px;color:var(--muted);font-size:17px;line-height:1.65}.ticket{margin-top:47px;border:1px solid var(--ink);padding:25px;max-width:330px;position:relative;background:#eeece3;transform:rotate(-2deg)}.ticket-top{display:flex;justify-content:space-between;font-size:10px;letter-spacing:2px;font-weight:bold;border-bottom:1px dashed #95958a;padding-bottom:16px}.ticket-title{font-size:29px;line-height:1.15;font-weight:900;letter-spacing:-1px;margin:20px 0 12px}.ticket p{font-size:13px;color:var(--muted);margin-bottom:4px}.star{font-size:28px;line-height:.5}.preview{display:inline-block;margin-top:35px;font-size:11px;border:1px solid var(--line);border-radius:20px;padding:6px 12px;color:var(--muted)}.preview:before{content:'';display:inline-block;width:6px;height:6px;background:#b08b19;border-radius:50%;margin-right:7px}.form-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:26px}h2{font-size:25px;letter-spacing:-.8px;margin:0}.required-note{font-size:11px;color:var(--muted)}.grid{display:grid;grid-template-columns:1fr 1fr;gap:19px 16px}.field.full{grid-column:1/-1}label{display:block;font-size:12px;font-weight:700;margin-bottom:7px}label .optional{font-weight:400;color:var(--muted)}input:not([type=checkbox]){width:100%;height:47px;border:1px solid var(--line);border-radius:3px;padding:11px 13px;font:inherit;font-size:14px;color:var(--ink);background:#fffefa;outline:none}input:focus-visible{border-color:var(--ink);box-shadow:0 0 0 2px #fbd54070}input::placeholder{color:#99998e}.password{position:relative}.password input{padding-right:58px!important}.show{position:absolute;right:7px;top:7px;height:33px;border:0;background:transparent;font-size:11px;font-weight:700;cursor:pointer;color:var(--ink)}.hint{font-size:11px;color:var(--muted);margin:6px 0 0}.preferences{margin:27px 0 22px;border-top:1px solid var(--line);padding-top:22px}.preferences h3{font-size:13px;margin:0 0 4px}.preferences p{font-size:12px;color:var(--muted);margin:0 0 13px}.check{display:flex;align-items:flex-start;gap:10px;font-size:12px;font-weight:400;cursor:pointer;line-height:1.65;margin:10px 0}.check input{width:17px;height:17px;flex:0 0 17px;margin:2px 0 0;accent-color:var(--ink);cursor:pointer}.checks-row{display:flex;gap:28px}.terms{border-top:1px solid var(--line);padding-top:17px;margin-bottom:22px}.terms a{color:inherit;font-weight:700;text-underline-offset:3px}.submit{width:100%;padding:16px 20px;border:1px solid var(--ink);background:var(--yellow);font-size:14px;font-weight:800;display:flex;justify-content:space-between;cursor:pointer;transition:background .15s}.submit:hover{background:#f2c720}.submit span:last-child{font-size:20px;line-height:20px}.form-foot{text-align:center;color:var(--muted);font-size:11px;margin:12px 0 0}footer{max-width:1160px;margin:auto;border-top:1px solid var(--line);padding:22px 3%;font-size:10px;color:var(--muted);display:flex;justify-content:space-between;letter-spacing:.5px}.notice{margin-top:20px;border:1px solid #9ba783;background:#eef2e7;padding:18px;font-size:14px}.notice h3{margin:0 0 6px;font-size:17px}.notice p{margin:0}.error-summary{color:#a32a20;background:#fff0ec;border:1px solid #dcb7ae;padding:12px;font-size:13px;margin-bottom:16px}.error-summary:empty{display:none}[hidden]{display:none!important}:focus-visible{outline:2px solid #8a6600;outline-offset:3px}@media(max-width:800px){.layout{gap:40px;padding:40px 6% 55px;grid-template-columns:1fr}.intro{padding:0}h1{font-size:57px;letter-spacing:-3px;margin:20px 0}.lead{max-width:440px;font-size:15px}.ticket{display:none}.preview{margin-top:10px}.header-note{font-size:9px;letter-spacing:1px}.logo{font-size:33px}.form-head{margin-bottom:22px}.grid{gap:17px 12px}footer{margin:0 6%;padding:20px 0}.form-head h2{font-size:23px}}@media(max-width:420px){.grid{grid-template-columns:1fr}.field.full{grid-column:auto}.required-note{font-size:10px}h1{font-size:53px}}
+
+/* Tablet-first registration layout. Branding can be replaced independently. */
+header{max-width:900px;padding:8px 28px;justify-content:center}.brand-logo,.collective-logo{display:block;width:112px;height:112px;object-fit:contain}header{gap:24px}.header-note{display:none}
+.layout{display:block;max-width:900px;padding:30px 28px 35px}.form-head{gap:20px;margin-bottom:24px}
+.grid{gap:20px 22px}label{font-size:14px}input:not([type=checkbox]){height:52px;font-size:16px}
+.show{height:44px;top:4px;right:4px;min-width:48px}.check{font-size:14px;min-height:44px;align-items:center;margin:0}.check input{height:22px;width:22px;flex-basis:22px;margin:0}.checks-row{gap:32px}.preferences{margin:24px 0 16px;padding-top:18px}.preferences h3{font-size:15px}.optional{font-weight:400;color:var(--muted);font-size:12px}.terms{padding-top:16px;margin-bottom:12px}.terms-link{border:0;padding:8px 0;background:none;color:inherit;font:inherit;font-weight:bold;text-decoration:underline;text-underline-offset:3px;cursor:pointer}.submit{min-height:54px;margin-top:12px}.submit:disabled{background:#e0dfd7;border-color:#c5c5bc;color:#797a70;cursor:not-allowed}.field-error{color:#a32a20;font-size:12px;line-height:1.4;margin:7px 0 0}input[aria-invalid=true]:not([type=checkbox]){border:2px solid #b4352b;background:#fff5f2}input[type=checkbox][aria-invalid=true]{outline:2px solid #b4352b;outline-offset:3px}footer{max-width:844px;padding:18px 0;margin:auto}
+body:has(dialog[open]){overflow:hidden}dialog{border:0;border-radius:8px;padding:0;width:min(900px,94vw);max-width:94vw;height:88dvh;max-height:94dvh;background:var(--paper);box-shadow:0 20px 80px #0005}dialog::backdrop{background:#0009}.dialog-head{display:flex;justify-content:flex-end;align-items:center;gap:15px;padding:16px 20px;border-bottom:1px solid var(--line)}#close-terms{height:48px;width:48px;font-size:32px;line-height:1;background:transparent;border:1px solid var(--line);border-radius:4px;cursor:pointer}.frame-help{font-size:12px;margin:12px 20px}.frame-help a{color:inherit}iframe{display:block;width:100%;height:calc(100% - 81px);border:0;background:white}@media(max-width:600px){.layout{padding:24px 20px}.grid{grid-template-columns:1fr;gap:17px}.form-head{display:block}.required-note{display:block;margin-top:5px}header{padding:20px}footer{margin:0 20px}.dialog-head h2{font-size:20px}}
+
+.submit{background:#a6192e;color:#fff;border:0;border-radius:10px;outline:none;justify-content:center;align-items:center;font-size:18px;line-height:1.2;padding:16px 20px}
+.submit:hover{background:#a6192e}
+.submit:disabled{background:#a6192e;color:#fff;opacity:.5;border:0}
+.submit:focus-visible{outline:none;box-shadow:0 0 0 3px var(--paper),0 0 0 5px #a6192e}
+
+#welcome-dialog{width:min(740px,94vw);height:min(760px,92dvh);background:#fff}#close-welcome{position:absolute;z-index:2;top:12px;right:12px;background:#fff;border:1px solid #ddd;border-radius:50%;height:48px;width:48px;font-size:30px;cursor:pointer}#welcome-frame{height:100%;width:100%;border:0}
+
+.session-bar{max-width:844px;margin:12px auto 0;display:flex;align-items:center;justify-content:space-between;gap:15px;font-size:12px;color:var(--muted);padding:0 10px}#lock-session{min-height:44px;padding:8px 14px;border:1px solid var(--line);border-radius:6px;background:transparent;cursor:pointer}#session-dialog{width:min(520px,92vw);height:auto;padding:30px}#session-dialog p{font-size:14px}#error-details{margin-bottom:20px}#error-details summary{cursor:pointer;padding:10px 0}#error-body{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px;max-height:280px;overflow:auto;background:#fff0ec;padding:12px}
+</style>
+</head>
+<body>
+<header><img class="brand-logo" src="logo.svg" alt="Schnitz" width="112" height="112"><img class="collective-logo" src="crumb-collective.png" alt="The Crumb Collective Loyalty Program" width="112" height="112"><div class="header-note">Made fresh. Made for you.</div></header>
+<div class="session-bar"><span id="session-status">Session locked</span><button type="button" id="lock-session">Lock session</button></div>
+<dialog id="session-dialog" aria-labelledby="session-heading"><form id="session-form" autocomplete="off"><h2 id="session-heading">Staff session setup</h2><p>Enter your staff access code to enable registration. It clears when this page reloads or the session is locked. The Redcat authentication token is stored securely in Cloudflare.</p><label for="session-token">Staff access code</label><input id="session-token" type="password" autocomplete="off" autocapitalize="none" spellcheck="false" required><p id="setup-error" class="field-error" role="alert"></p><button class="submit" type="submit">Start session</button><p class="hint">Registrations will be sent to the Schnitz sandpit · Store <span id="setup-store"></span></p></form></dialog>
+<main class="layout">
+<section aria-label="Loyalty registration">
+<form id="registration" action="#" method="post">
+<div id="errors" class="error-summary" role="alert"></div><details id="error-details" hidden><summary>View full error details</summary><pre id="error-body"></pre></details>
+<input type="hidden" name="StoreID" id="StoreID" value="">
+<div class="grid">
+<div class="field"><label for="Email">Email <span aria-hidden="true">*</span></label><input id="Email" name="Email" type="email" autocomplete="email" placeholder="you@example.com" required></div>
+<div class="field"><label for="ConfirmEmail">Confirm email <span aria-hidden="true">*</span></label><input id="ConfirmEmail" name="ConfirmEmail" type="email" autocomplete="off" placeholder="Enter your email again" required></div>
+<div class="field"><label for="GivenNames">Given name <span aria-hidden="true">*</span></label><input id="GivenNames" name="GivenNames" autocomplete="given-name" maxlength="40" placeholder="Given name" required></div>
+<div class="field"><label for="Surname">Surname <span aria-hidden="true">*</span></label><input id="Surname" name="Surname" autocomplete="family-name" maxlength="40" placeholder="Surname" required></div>
+<div class="field"><label for="Password">Password <span aria-hidden="true">*</span></label><div class="password"><input id="Password" name="Password" type="password" autocomplete="new-password" placeholder="Create a password" required><button class="show" type="button" data-target="Password" aria-label="Show password" aria-pressed="false">Show</button></div></div>
+<div class="field"><label for="ConfirmPassword">Confirm password <span aria-hidden="true">*</span></label><div class="password"><input id="ConfirmPassword" name="ConfirmPassword" type="password" autocomplete="new-password" placeholder="Enter password again" required><button class="show" type="button" data-target="ConfirmPassword" aria-label="Show confirm password" aria-pressed="false">Show</button></div></div>
+<div class="field"><label for="DateOfBirth">Date of birth <span class="optional">(optional)</span></label><input id="DateOfBirth" name="DateOfBirth" type="date" autocomplete="bday"></div>
+<div class="field"><label for="Mobile">Mobile <span aria-hidden="true">*</span></label><input id="Mobile" name="Mobile" type="tel" autocomplete="tel" placeholder="0412 345 678" required></div>
+<div class="field"><label for="Postcode">Postcode <span aria-hidden="true">*</span></label><input id="Postcode" name="Postcode" autocomplete="postal-code" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" title="Enter a four-digit Australian postcode" placeholder="e.g. 3000" required></div>
+</div>
+<div class="preferences"><h3>I'd like to receive news, offers and updates by: <span class="optional">(optional)</span></h3><div class="checks-row"><label class="check"><input type="checkbox" name="SendEmail" id="SendEmail" checked><span>Email</span></label><label class="check"><input type="checkbox" name="SendSMS" id="SendSMS" checked><span>SMS</span></label></div></div>
+<label class="check terms"><input id="TermsAccepted" type="checkbox" required><span>I agree to the <button type="button" class="terms-link" id="open-terms" aria-haspopup="dialog">Terms And Conditions</button>. <span aria-hidden="true">*</span></span></label>
+<p id="submit-help" class="hint">Complete all required fields and agree to the Terms And Conditions to continue.</p><button class="submit" type="submit" disabled aria-describedby="submit-help">Submit</button><p class="form-foot">Sandpit registration · Details are sent through the secure registration service.</p>
+</form>
+</section>
+</main>
+<dialog id="terms-dialog" aria-label="Terms And Conditions">
+ <div class="dialog-head"><button type="button" id="close-terms" aria-label="Close Terms And Conditions">×</button></div>
+ <iframe id="terms-frame" title="Schnitz Terms And Conditions" referrerpolicy="no-referrer"></iframe>
+</dialog>
+<dialog id="welcome-dialog" aria-label="Welcome to The Crumb Collective"><button type="button" id="close-welcome" aria-label="Close welcome message">×</button><iframe id="welcome-frame" title="Welcome to The Crumb Collective"></iframe></dialog>
+<footer><span>© Schnitz · Registration concept</span></footer>
+<script src="config.js"></script>
+<script>
+'use strict';
+const form=document.getElementById('registration');
+const field=id=>document.getElementById(id);
+field('StoreID').value=String(window.REGISTRATION_CONFIG.storeId);
+const submit=form.querySelector('[type="submit"]');
+const controls=[...form.querySelectorAll('input:not([type="hidden"])')];
+const touched=new Set();
+let sessionToken='';
+let pending=false;
+const sessionDialog=field('session-dialog');
+field('setup-store').textContent=window.REGISTRATION_CONFIG.storeId;
+field('session-form').addEventListener('submit',event=>{
+ event.preventDefault();const token=field('session-token').value.trim();if(!token)return;
+ if(!window.REGISTRATION_CONFIG.registrationUrl){field('setup-error').textContent='Set the Cloudflare registration URL in config.js first.';return;}
+ try{const url=new URL(window.REGISTRATION_CONFIG.registrationUrl);if(url.protocol!=='https:'||url.pathname!=='/register')throw new Error();}catch{field('setup-error').textContent='Use an HTTPS Worker URL ending in /register.';return;}
+ field('setup-error').textContent='';
+ sessionToken=token;field('session-token').value='';sessionDialog.close();
+ field('session-status').textContent='Sandpit session active · Store '+window.REGISTRATION_CONFIG.storeId;
+ validate();field('Email').focus();
+});
+sessionDialog.addEventListener('cancel',event=>event.preventDefault());
+field('lock-session').addEventListener('click',()=>{
+ if(pending)return;
+ sessionToken='';form.reset();field('StoreID').value=String(window.REGISTRATION_CONFIG.storeId);touched.clear();
+ field('errors').textContent='';field('error-details').hidden=true;field('error-body').textContent='';
+ document.querySelectorAll('.show').forEach(button=>{field(button.dataset.target).type='password';button.textContent='Show';button.setAttribute('aria-pressed','false');});
+ if(welcome.open)closeWelcome();
+ field('session-status').textContent='Session locked';validate();sessionDialog.showModal();
+});
+window.addEventListener('pagehide',()=>{sessionToken='';field('session-token').value='';});
+window.addEventListener('pageshow',()=>{if(!sessionToken&&!sessionDialog.open){validate();sessionDialog.showModal();}});
+const today=new Date();
+field('DateOfBirth').max=[today.getFullYear(),String(today.getMonth()+1).padStart(2,'0'),String(today.getDate()).padStart(2,'0')].join('-');
+controls.forEach(input=>{
+ const message=document.createElement('p');message.className='field-error';message.id=input.id+'-error';message.hidden=true;
+ if(input.type==='checkbox') input.closest('label').after(message);
+ else (input.closest('.password')||input).after(message);
+ input.setAttribute('aria-describedby',[(input.getAttribute('aria-describedby')||''),message.id].filter(Boolean).join(' '));
+});
+function validate(){
+ field('ConfirmEmail').setCustomValidity(field('ConfirmEmail').value && field('Email').value.trim().toLowerCase()!==field('ConfirmEmail').value.trim().toLowerCase()?'Email addresses do not match.':'');
+ field('ConfirmPassword').setCustomValidity(field('ConfirmPassword').value && field('Password').value!==field('ConfirmPassword').value?'Passwords do not match.':'');
+ const mobile=field('Mobile').value.replace(/[\s()-]/g,'');
+ field('Mobile').setCustomValidity(!mobile||/^(?:04\d{8}|\+614\d{8}|\+\d{11,13})$/.test(mobile)?'':'Enter a valid Australian mobile or international number starting with +.');
+ for(const id of ['GivenNames','Surname','Password']){
+  field(id).setCustomValidity(field(id).value && !field(id).value.trim()?'Please enter '+(id==='GivenNames'?'your given name':id==='Surname'?'your surname':'a password')+'.':'');
+ }
+ controls.forEach(input=>{
+  const invalid=!input.validity.valid&&touched.has(input.id);
+  input.setAttribute('aria-invalid',String(!!invalid));
+  const message=field(input.id+'-error');message.hidden=!invalid;
+  message.textContent=invalid?(input.id==='TermsAccepted'?'Please agree to the Terms And Conditions.':input.validity.valueMissing?'This field is required.':input.validationMessage):'';
+ });
+ const valid=controls.every(input=>input.validity.valid);
+ submit.disabled=!valid||!sessionToken||pending;
+ field('submit-help').textContent=pending?'Submitting registration…':!sessionToken?'Staff must start a session before registration.':valid?'Your details are ready. Select Submit to register.':'Complete all required fields and agree to the Terms And Conditions to continue.';
+ return valid;
+}
+form.addEventListener('input',()=>{validate();field('errors').textContent='';});
+form.addEventListener('change',validate);
+form.addEventListener('focusin',event=>{
+ if(['ConfirmEmail','ConfirmPassword'].includes(event.target.id)){
+  touched.delete(event.target.id);
+  validate();
+ }
+});
+form.addEventListener('focusout',event=>{if(controls.includes(event.target)){touched.add(event.target.id);validate();}});
+form.addEventListener('keydown',event=>{if(event.key==='Enter'&&event.target.tagName==='INPUT'&&!validate()){event.preventDefault();controls.forEach(input=>touched.add(input.id));validate();}});
+for(const button of document.querySelectorAll('.show'))button.addEventListener('click',()=>{
+ const input=field(button.dataset.target);const show=input.type==='password';input.type=show?'text':'password';button.textContent=show?'Hide':'Show';button.setAttribute('aria-pressed',String(show));button.setAttribute('aria-label',(show?'Hide ':'Show ')+(input.id==='Password'?'password':'confirm password'));
+});
+const dialog=field('terms-dialog');
+field('open-terms').addEventListener('click',()=>{
+ if(!field('terms-frame').src)field('terms-frame').src='https://schnitz.com.au/terms-and-conditions';
+ dialog.showModal();field('close-terms').focus();
+});
+function closeTerms(){dialog.close();field('open-terms').focus();}
+field('close-terms').addEventListener('click',closeTerms);
+dialog.addEventListener('cancel',event=>{event.preventDefault();closeTerms();});
+const welcome=field('welcome-dialog');
+function closeWelcome(){
+ if(welcome.open)welcome.close();
+ field('welcome-frame').removeAttribute('src');
+ field('Email').focus();
+}
+field('close-welcome').addEventListener('click',closeWelcome);
+welcome.addEventListener('cancel',event=>{event.preventDefault();closeWelcome();});
+window.addEventListener('message',event=>{
+ if(event.source===field('welcome-frame').contentWindow&&event.data?.type==='close-welcome')closeWelcome();
+});
+// Only a confirmed successful Redcat response resets the form.
+function handleRegistrationResponse(response, {preview=false}={}){
+ if(response?.success!==true)return false;
+ const storeID=field('StoreID').value;
+ form.reset();field('StoreID').value=storeID;touched.clear();
+ document.querySelectorAll('.show').forEach(button=>{
+  field(button.dataset.target).type='password';button.textContent='Show';
+  button.setAttribute('aria-pressed','false');
+  button.setAttribute('aria-label',button.dataset.target==='Password'?'Show password':'Show confirm password');
+ });
+ validate();
+ field('welcome-frame').src='welcome.html'+(preview?'?preview=1':'');
+ if(!welcome.open)welcome.showModal();
+ field('close-welcome').focus();
+ return true;
+}
+// Never persist the authentication token or log registration payloads.
+function registrationPayload(){
+ const payload={};
+ for(const name of ['Email','ConfirmEmail','GivenNames','Surname','Password','ConfirmPassword','Mobile','Postcode'])payload[name]=field(name).value;
+ for(const name of ['Email','ConfirmEmail','GivenNames','Surname','Postcode'])payload[name]=payload[name].trim();
+ payload.Mobile=payload.Mobile.replace(/[\s()-]/g,'');
+ if(field('DateOfBirth').value)payload.DateOfBirth=field('DateOfBirth').value;
+ payload.StoreID=Number(window.REGISTRATION_CONFIG.storeId);
+ payload.SendEmail=field('SendEmail').checked;payload.SendSMS=field('SendSMS').checked;
+ return payload;
+}
+function showRegistrationError(message,details){
+ field('errors').textContent=message;
+ let text=typeof details==='string'?details:JSON.stringify(details,null,2);
+ // Prevent any echoed key or password from appearing in the error viewer.
+ for(const secret of [sessionToken,field('Password').value,field('ConfirmPassword').value])if(secret)text=text.split(secret).join('[redacted]');
+ field('error-body').textContent=text;field('error-details').hidden=false;
+}
+form.noValidate=true;
+form.addEventListener('submit',async event=>{
+ event.preventDefault();if(pending||!sessionToken)return;
+ controls.forEach(input=>touched.add(input.id));
+ if(!validate()){field('errors').textContent='Please complete the highlighted fields and agree to the Terms And Conditions.';form.querySelector('[aria-invalid="true"]')?.focus();return;}
+ field('errors').textContent='';field('error-details').hidden=true;field('error-body').textContent='';
+ pending=true;field('lock-session').disabled=true;submit.textContent='Submitting…';validate();
+ const controller=new AbortController();const timeout=setTimeout(()=>controller.abort(),30000);
+ try{
+  const response=await fetch(window.REGISTRATION_CONFIG.registrationUrl,{
+   method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+sessionToken},
+   body:JSON.stringify(registrationPayload()),credentials:'omit',cache:'no-store',redirect:'error',signal:controller.signal
+  });
+  const raw=await response.text();let data;try{data=JSON.parse(raw);}catch{}
+  if(response.ok&&data?.success===true){handleRegistrationResponse(data);}
+  else showRegistrationError('Registration failed. Your details have been kept. Select View full error details for more information.',{httpStatus:response.status,response:data??raw});
+ }catch(error){
+  showRegistrationError('Could not confirm registration. Check the error details before retrying; the registration may have reached Redcat.',{
+   error:error.name==='AbortError'?'The request timed out after 30 seconds.':String(error.message),
+   help:'Check the Worker URL in config.js and ALLOWED_ORIGIN in Cloudflare. Open the form from GitHub Pages rather than as a local file. There is no automatic retry.'
+  });
+ }finally{clearTimeout(timeout);pending=false;field('lock-session').disabled=false;submit.textContent='Submit';validate();}
+});
+validate();
+sessionDialog.showModal();
+</script>
+</body></html>
